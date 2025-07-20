@@ -1,0 +1,4 @@
+django~=4.2.23
+django-bootstrap4~=25.1
+mysqlclient~=2.2.7
+django-dotenv~=1.4.2
