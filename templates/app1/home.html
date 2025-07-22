@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}基础模板{% endblock %}</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <!-- 自定义样式 -->
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .content-auto {
+                content-visibility: auto;
+            }
+        }
+    </style>
+    <!-- Font Awesome -->
+    <link href="https://cdn.jsdelivr.net/npm/font-awesome@4.7.0/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <!-- 导航栏 -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light sticky-top shadow-sm">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#">
+                <i class="fa fa-cube mr-2"></i>实验室耗材智能库存管理系统
+            </a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">首页 <span class="sr-only">(当前)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">功能</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">关于</a>
+                    </li>
+                </ul>
+                <div class="navbar-nav ml-auto">
+                    <a class="nav-link" href="#">登录</a>
+                    <a class="btn btn-outline-primary ml-2" href="#">注册</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- 主要内容 -->
+    <main class="container-fluid py-4">
+        <!-- 页面标题 -->
+        <!-- <div class="mb-5 text-center">
+            <h1 class="display-4 font-weight-bold">{% block page_title %}欢迎使用{% endblock %}</h1>
+            <p class="lead text-muted">{% block page_description %}这是一个基于Bootstrap 4的基础模板{% endblock %}</p>
+            <hr class="w-25 my-4">
+        </div> -->
+
+        <!-- 内容区域 -->
+        <div class="row">
+            <!-- 侧边栏 -->
+            <!-- <aside class="col-md-2 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        导航菜单
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item active">首页</li>
+                        <li class="list-group-item">产品</li>
+                        <li class="list-group-item">服务</li>
+                        <li class="list-group-item">案例</li>
+                        <li class="list-group-item">联系我们</li>
+                    </ul>
+                </div>
+            </aside> -->
+            <aside class="col-md-2 mb-4">
+                <div class="card">
+                    <div class="card-header bg-primary text-white">
+                        导航菜单
+                    </div>
+                    <div class="list-group list-group-flush">
+                        <a href="#" class="list-group-item list-group-item-action active">首页</a>
+                        <!-- 侧边栏可折叠菜单 -->
+                        <a href="#productsSidebar" class="list-group-item list-group-item-action" data-toggle="collapse">
+                            产品 <i class="fa fa-chevron-down float-right"></i>
+                        </a>
+                        <div class="collapse show" id="productsSidebar">
+                            <a href="#" class="list-group-item list-group-item-action pl-5">产品类别 1</a>
+                            <a href="#" class="list-group-item list-group-item-action pl-5">产品类别 2</a>
+                            <a href="#productSeries" class="list-group-item list-group-item-action pl-5" data-toggle="collapse">
+                                产品系列 <i class="fa fa-chevron-down float-right"></i>
+                            </a>
+                            <div class="collapse" id="productSeries">
+                                <a href="#" class="list-group-item list-group-item-action pl-7">系列 A</a>
+                                <a href="#" class="list-group-item list-group-item-action pl-7">系列 B</a>
+                            </div>
+                        </div>
+                        <a href="#servicesSidebar" class="list-group-item list-group-item-action" data-toggle="collapse">
+                            服务 <i class="fa fa-chevron-down float-right"></i>
+                        </a>
+                        <div class="collapse" id="servicesSidebar">
+                            <a href="#" class="list-group-item list-group-item-action pl-5">服务项目 1</a>
+                            <a href="#" class="list-group-item list-group-item-action pl-5">服务项目 2</a>
+                        </div>
+                        <a href="#" class="list-group-item list-group-item-action">案例</a>
+                        <a href="#" class="list-group-item list-group-item-action">联系我们</a>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- 主内容 -->
+            <div class="col-md-10">
+                {% block content %}
+                <div class="jumbotron">
+                    <h2 class="display-5">开始构建您的网站</h2>
+                    <p class="lead">这个基础模板提供了响应式布局和常用组件，帮助您快速搭建网站。</p>
+                    <hr class="my-4">
+                    <p>您可以通过继承这个模板来创建各个页面，并重写相应的区块。</p>
+                    <a class="btn btn-primary btn-lg" href="#" role="button">了解更多</a>
+                </div>
+                {% endblock %}
+
+                {% block content %}
+                <!-- 特性卡片 -->
+                <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-mobile fa-2x text-primary mb-2"></i> 响应式设计</h5>
+                                <p class="card-text">您的网站在任何设备上都能完美展示，从手机到桌面电脑。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-paint-brush fa-2x text-primary mb-2"></i> 现代UI</h5>
+                                <p class="card-text">使用Bootstrap 4提供的现代化组件和样式，打造专业外观。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-bolt fa-2x text-primary mb-2"></i> 快速构建</h5>
+                                <p class="card-text">基于成熟框架，节省开发时间，专注于业务逻辑。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- <div class="row">
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-mobile fa-2x text-primary mb-2"></i> 响应式设计</h5>
+                                <p class="card-text">您的网站在任何设备上都能完美展示，从手机到桌面电脑。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-paint-brush fa-2x text-primary mb-2"></i> 现代UI</h5>
+                                <p class="card-text">使用Bootstrap 4提供的现代化组件和样式，打造专业外观。</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-4">
+                        <div class="card h-100">
+                            <div class="card-body">
+                                <h5 class="card-title"><i class="fa fa-bolt fa-2x text-primary mb-2"></i> 快速构建</h5>
+                                <p class="card-text">基于成熟框架，节省开发时间，专注于业务逻辑。</p>
+                            </div>
+                        </div>
+                    </div>
+                </div> -->
+                {% endblock %}
+            </div>
+        </div>
+    </main>
+
+    <!-- 页脚 -->
+    <footer class="bg-dark text-white py-4 fixed-bottom">
+
+    </footer>
+    <!-- <footer class="bg-dark text-white py-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <h5>关于我们</h5>
+                    <p>这是一个基于Bootstrap 4的基础模板，可用于快速搭建响应式网站。</p>
+                </div>
+                <div class="col-md-4">
+                    <h5>联系我们</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fa fa-envelope mr-2"></i> contact@example.com</li>
+                        <li><i class="fa fa-phone mr-2"></i> +86 123 4567 8901</li>
+                        <li><i class="fa fa-map-marker mr-2"></i> 北京市朝阳区</li>
+                    </ul>
+                </div>
+                <div class="col-md-4">
+                    <h5>关注我们</h5>
+                    <div class="d-flex justify-content-between w-50">
+                        <a href="#" class="text-white"><i class="fa fa-weixin fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fa fa-weibo fa-2x"></i></a>
+                        <a href="#" class="text-white"><i class="fa fa-github fa-2x"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="row mt-5">
+                <div class="col-md-12 text-center text-muted">
+                    <p>&copy; 2025 基础模板版权所有</p>
+                </div>
+            </div>
+        </div>
+    </footer> -->
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+    <!-- 自定义脚本 -->
+    <script>
+        // 页面加载完成后执行
+        $(document).ready(function() {
+            // 平滑滚动
+            $('a[href^="#"]').on('click', function(event) {
+                var target = $(this.getAttribute('href'));
+                if(target.length) {
+                    event.preventDefault();
+                    $('html, body').stop().animate({
+                        scrollTop: target.offset().top
+                    }, 1000);
+                }
+            });
+
+            // 导航栏滚动效果
+            $(window).scroll(function() {
+                if ($(this).scrollTop() > 50) {
+                    $('.navbar').addClass('bg-white shadow');
+                    $('.navbar').removeClass('bg-light');
+                } else {
+                    $('.navbar').addClass('bg-light');
+                    $('.navbar').removeClass('bg-white shadow');
+                }
+            });
+        });
+    </script>
+</body>
+</html>
+    
