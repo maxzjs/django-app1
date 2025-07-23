@@ -9,11 +9,11 @@ def custom_404(request, exception):
     return redirect('login')
 
 def login(request):
-    return render(request, 'app1/login.html')
+    return render(request, 'app1/login1.html')
 
 
 def index(request):
-    return render(request, 'app1/index.html')
+    return render(request, 'app1/home.html')
 
 
 
